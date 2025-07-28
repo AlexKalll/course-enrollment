@@ -9,7 +9,13 @@
     <h2>{{ $course->name }}</h2>
     <p>{{ $course->description }}</p>
 
-    <a href="{{ route('dashboard') }}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+    <div class="mt-3">
+        <a href="{{ route('dashboard') }}" class="btn btn-secondary me-2">Back to Dashboard</a>
+        <form method="POST" action="{{ route('logout') }}" class="d-inline">
+            @csrf
+            <button type="submit" class="btn btn-danger">Logout</button>
+        </form>
+    </div>
 </div>
 </body>
 </html>

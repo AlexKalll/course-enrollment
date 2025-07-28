@@ -9,7 +9,13 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1>Available Courses</h1>
         @auth
-            <a href="{{ route('dashboard') }}" class="btn btn-success">Go to Dashboard</a>
+            <div>
+                <a href="{{ route('dashboard') }}" class="btn btn-success me-2">Go to Dashboard</a>
+                <form method="POST" action="{{ route('logout') }}" class="d-inline">
+                    @csrf
+                    <button type="submit" class="btn btn-danger">Logout</button>
+                </form>
+            </div>
         @endauth
     </div>
 

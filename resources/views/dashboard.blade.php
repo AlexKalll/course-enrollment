@@ -9,7 +9,13 @@
     <h2 class="mb-4">Welcome, {{ auth()->user()->name }}</h2>
     <div class="d-flex justify-content-between align-items-center mb-3">
     <h4>Your Enrolled Courses</h4>
-    <a href="{{ route('home') }}" class="btn btn-primary">Browse Courses</a>
+    <div>
+        <a href="{{ route('home') }}" class="btn btn-primary me-2">Browse Courses</a>
+        <form method="POST" action="{{ route('logout') }}" class="d-inline">
+            @csrf
+            <button type="submit" class="btn btn-danger">Logout</button>
+        </form>
+    </div>
 </div>
 
     <div class="row">
