@@ -16,6 +16,10 @@
                     <button type="submit" class="btn btn-danger">Logout</button>
                 </form>
             </div>
+        @else
+            <div>
+                <a href="{{ route('register') }}" class="btn btn-primary">Register</a>
+            </div>
         @endauth
     </div>
 
