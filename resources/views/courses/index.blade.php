@@ -36,10 +36,22 @@
                             <p><strong>Price:</strong> {{ $course->price }} ETB</p>
 
                             @auth
-                                <form method="POST" action="{{ route('courses.enroll', $course->id) }}">
-                                    @csrf
-                                    <button class="btn btn-success">Enroll</button>
-                                </form>
+                                @auth
+                                    @if(auth()->user()->courses->contains($course->id))
+                                         <a href="{{ route('courses.resources', $course->id) }}" class="btn btn-info">Continue Learning</a>
+                                         <form method="POST" action="{{ route('courses.unenroll', $course->id) }}" class="d-inline">
+                                             @csrf
+                                             <button type="submit" class="btn btn-warning">Unenroll</button>
+                                         </form>
+                                     @else
+                                        <form method="POST" action="{{ route('courses.enroll', $course->id) }}">
+                                            @csrf
+                                            <button class="btn btn-success">Enroll</button>
+                                        </form>
+                                    @endif
+                                @else
+                                    <a href="{{ route('login') }}" class="btn btn-primary">Login to Enroll</a>
+                                @endauth
                             @else
                                 <a href="{{ route('login') }}" class="btn btn-primary">Login to Enroll</a>
                             @endauth
