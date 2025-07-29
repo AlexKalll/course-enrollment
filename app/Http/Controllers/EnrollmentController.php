@@ -13,11 +13,24 @@ class EnrollmentController extends Controller
 
       
         if ($user->courses()->where('course_id', $course->id)->exists()) {
-            return back()->with('message', 'Already enrolled in this course.');
+            return redirect()->route('courses.resources', $course->id)->with('message', 'You are already enrolled in this course. Continue learning!');
         }
 
         $user->courses()->attach($course->id);
 
         return back()->with('message', 'Enrolled successfully!');
     }
+
+    public function unenroll(Course $course)
+    {
+        $user = auth()->user();
+
+        if ($user->courses()->where('course_id', $course->id)->exists()) {
+            $user->courses()->detach($course->id);
+            return back()->with('message', 'Unenrolled successfully!');
+        }
+
+        return back()->with('message', 'You are not enrolled in this course.');
+    }
+    
 }

@@ -26,6 +26,10 @@
                         <h5 class="card-title">{{ $course->name }}</h5>
                         <p class="card-text">{{ Str::limit($course->description, 100) }}</p>
                         <a href="{{ route('courses.resources', $course->id) }}" class="btn btn-primary">Get Resources</a>
+                        <form method="POST" action="{{ route('courses.unenroll', $course->id) }}" class="mt-2">
+                            @csrf
+                            <button type="submit" class="btn btn-warning">Unenroll</button>
+                        </form>
                     </div>
                 </div>
             </div>

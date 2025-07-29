@@ -33,6 +33,9 @@ Route::middleware('auth')->group(function () {
 
 
     Route::post('/courses/{course}/enroll', [EnrollmentController::class, 'enroll'])->name('courses.enroll');
+    Route::post('/courses/{course}/unenroll', [EnrollmentController::class, 'unenroll'])->name('courses.unenroll');
+
+    Route::get('/courses/{course}', [CourseController::class, 'show'])->name('courses.show');
 
 
     Route::get('/courses/{course}/resources', [CourseController::class, 'resources'])->name('courses.resources');
