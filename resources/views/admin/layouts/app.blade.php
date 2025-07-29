@@ -41,7 +41,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.courses') }}" class="{{ request()->routeIs('admin.courses*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.courses.index') }}" class="{{ request()->routeIs('admin.courses*') ? 'active' : '' }}">
                             <i class="fas fa-book me-2"></i> Courses
                         </a>
                     </li>
