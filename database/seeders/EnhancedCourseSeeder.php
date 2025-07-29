@@ -17,52 +17,52 @@ class EnhancedCourseSeeder extends Seeder
             [
                 'title' => 'Introduction to Web Development',
                 'description' => 'Learn the basics of HTML, CSS, and JavaScript to build modern websites.',
-                'resources' => 'HTML5 & CSS3 Handbook, JavaScript Fundamentals eBook, Code Editor Setup Guide',
+                'price' => 49.99,
             ],
             [
                 'title' => 'Advanced PHP Programming',
                 'description' => 'Master PHP programming with advanced concepts, design patterns, and best practices.',
-                'resources' => 'PHP 8 Documentation, Design Patterns in PHP, Laravel Framework Guide',
+                'price' => 59.99,
             ],
             [
                 'title' => 'Database Design and Management',
                 'description' => 'Learn how to design, implement, and manage relational databases with MySQL.',
-                'resources' => 'MySQL Workbench, Database Normalization Guide, SQL Query Optimization Techniques',
+                'price' => 39.99,
             ],
             [
                 'title' => 'Mobile App Development with React Native',
                 'description' => 'Build cross-platform mobile applications using React Native framework.',
-                'resources' => 'React Native Documentation, Expo CLI, Mobile UI/UX Design Principles',
+                'price' => 69.99,
             ],
             [
                 'title' => 'DevOps and Continuous Integration',
                 'description' => 'Learn modern DevOps practices including CI/CD pipelines, containerization, and cloud deployment.',
-                'resources' => 'Docker Essentials, Jenkins Pipeline Tutorial, AWS/Azure Deployment Guides',
+                'price' => 79.99,
             ],
             [
                 'title' => 'Data Science Fundamentals',
                 'description' => 'Introduction to data analysis, visualization, and machine learning concepts.',
-                'resources' => 'Python for Data Science, Jupyter Notebooks, Pandas & NumPy Libraries, Matplotlib Visualization',
+                'price' => 89.99,
             ],
             [
                 'title' => 'Cybersecurity Essentials',
                 'description' => 'Learn the fundamentals of network security, encryption, and ethical hacking.',
-                'resources' => 'Network Security Handbook, Encryption Algorithms Guide, Penetration Testing Tools',
+                'price' => 74.99,
             ],
             [
                 'title' => 'UI/UX Design Principles',
                 'description' => 'Master the art of creating intuitive user interfaces and exceptional user experiences.',
-                'resources' => 'Figma Design Tool, UI Component Libraries, User Research Methodologies',
+                'price' => 44.99,
             ],
             [
                 'title' => 'Blockchain Development',
                 'description' => 'Explore blockchain technology and learn to build decentralized applications.',
-                'resources' => 'Ethereum Development Guide, Solidity Programming Language, Web3.js Library',
+                'price' => 99.99,
             ],
             [
                 'title' => 'Cloud Computing with AWS',
                 'description' => 'Learn to architect and deploy scalable applications on Amazon Web Services.',
-                'resources' => 'AWS Console Access, S3 Storage Guide, EC2 Instance Management, Lambda Functions',
+                'price' => 84.99,
             ],
         ];
 
