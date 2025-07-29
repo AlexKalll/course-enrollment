@@ -34,7 +34,7 @@ Follow these steps to set up the project locally:
     composer install
     ```
 
-3.  **Create a the `.env` file or a copy of `.env.example` the **
+3.  **Create a the `.env` file or make a copy of `.env.example` to it as the command below **
     ```bash
     cp .env.example .env
     ```
