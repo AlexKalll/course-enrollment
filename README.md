@@ -1,61 +1,85 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Course Enrollment System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This is a web application built with Laravel that allows users to browse courses, enroll in them, and manage their enrollments. It also includes an admin panel for managing courses, users, and enrollments.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### User Features:
+- **User Authentication**: Register, login, and logout functionality.
+- **Browse Courses**: View a list of available courses.
+- **Enroll in Courses**: Enroll in desired courses.
+- **Dashboard**: View a list of enrolled courses.
+- **Continue Learning**: Redirects to the course details page.
+- **Unenroll from Courses**: Remove a course from the dashboard and the database.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Admin Features:
+- **Admin Authentication**: Separate login for administrators.
+- **Dashboard**: Overview of courses, users, and enrollments.
+- **Course Management**: Create, view, edit, and delete courses.
+- **User Management**: Create, view, edit, and delete users.
+- **Enrollment Management**: View and delete enrollments.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Installation
 
-## Learning Laravel
+Follow these steps to set up the project locally:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/AlexKalll/course-enrollment.git
+    cd course-enrollment
+    ```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+2.  **Install Composer dependencies:**
+    ```bash
+    composer install
+    ```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+3.  **Create a the `.env` file or a copy of `.env.example` the **
+    ```bash
+    cp .env.example .env
+    ```
 
-## Laravel Sponsors
+4.  **Generate an application key:**
+    ```bash
+    php artisan key:generate
+    ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+5.  **Configure your database:**
+    Open the `.env` file and update the database connection details. For example, for MySQL:
+    ```
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1 (or localhost)
+    DB_PORT=3306
+    DB_DATABASE=course_enrollment_db
+    DB_USERNAME=root
+    DB_PASSWORD=
+    ```
 
-### Premium Partners
+6.  **Run database migrations and seeders:**
+    This will create the necessary tables and populate them with initial data, including an admin user.
+    ```bash
+    php artisan migrate:fresh --seed
+    ```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+7.  **Start the development server:**
+    ```bash
+    php artisan serve
+    ```
 
-## Contributing
+    The application will be accessible at `http://localhost:8000` (or another port if specified) or via `http://127.0.0.1:8000`.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Note: Make sure to have Xampp, Mamp, Wamp, laravel herd or any other local server running on your machine.
+## Usage
 
-## Code of Conduct
+### User Access:
+-   **Register/Login**: Navigate to `/register` or `/login` to create an account or log in.
+-   **Browse Courses**: After logging in, you can browse courses from the home page or your dashboard.
+-   **Enroll/Unenroll**: Click on a course to see details and enroll. From your dashboard, you can unenroll from courses.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Admin Access:
+-   **Login**: Navigate to `/admin/login`.
+-   **Credentials**: Use `admin@gmail.com` as the email and `123456` as the password.
+-   **Manage**: Access the admin dashboard to manage courses, users, and enrollments.
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+### Contributors
