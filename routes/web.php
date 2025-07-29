@@ -6,6 +6,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\Admin\AdminCoursesController;
 
 Route::get('/', [CourseController::class, 'showAllCourses'])->name('home');
 
@@ -49,12 +50,7 @@ Route::prefix('admin')->name('admin.')->middleware(['admin.auth'])->group(functi
     Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
     
     // Course Management
-    Route::get('/courses', [AdminController::class, 'courses'])->name('courses');
-    Route::get('/courses/create', [AdminController::class, 'createCourse'])->name('courses.create');
-    Route::post('/courses', [AdminController::class, 'storeCourse'])->name('courses.store');
-    Route::get('/courses/{course}/edit', [AdminController::class, 'editCourse'])->name('courses.edit');
-    Route::put('/courses/{course}', [AdminController::class, 'updateCourse'])->name('courses.update');
-    Route::delete('/courses/{course}', [AdminController::class, 'deleteCourse'])->name('courses.delete');
+    Route::resource('courses', AdminCoursesController::class);
     
     // User Management
     Route::get('/users', [AdminController::class, 'users'])->name('users');
