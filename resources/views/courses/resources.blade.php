@@ -9,7 +9,7 @@
     <h2>{{ $course->name }}</h2>
     <p>{{ $course->description }}</p>
 
-    <div class="mt-3">
+    <div class="d-flex justify-content-end mb-3">
         <a href="{{ route('dashboard') }}" class="btn btn-secondary me-2">Back to Dashboard</a>
         <form method="POST" action="{{ route('logout') }}" class="d-inline">
             @csrf
