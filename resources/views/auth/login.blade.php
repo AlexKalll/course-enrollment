@@ -12,8 +12,14 @@
 <body>
     <div class="container">
         <h2>Login</h2>
-        @if (session('error'))
-            <div class="error">{{ session('error') }}</div>
+        @if ($errors->any())
+            <div class="error">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
         @endif
         <form action="{{ route('login.post') }}" method="POST">
             @csrf
@@ -21,6 +27,7 @@
             <input type="password" name="password" placeholder="Password" required>
             <button type="submit">Login</button>
         </form>
+        <p><a href="#">Forgot Password?</a></p>
         <p>Don't have an account? <a href="{{ route('register') }}">Register</a></p>
     </div>
 </body>
