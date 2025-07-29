@@ -14,7 +14,7 @@ class AdminController extends Controller
     public function dashboard()
     {
         $coursesCount = Course::count();
-        $usersCount = User::where('is_admin', false)->count();
+        $usersCount = User::count();
         $enrollmentsCount = Enrollment::count();
         
         $recentCourses = Course::withCount('enrollments')
@@ -22,7 +22,7 @@ class AdminController extends Controller
             ->limit(5)
             ->get();
             
-        $recentUsers = User::where('is_admin', false)
+        $recentUsers = User::orderBy('created_at', 'desc')
             ->withCount('enrollments')
             ->orderBy('created_at', 'desc')
             ->limit(5)
@@ -37,62 +37,7 @@ class AdminController extends Controller
         ));
     }
     
-    // Course Management
-    public function courses()
-    {
-        $courses = Course::withCount('enrollments')
-            ->orderBy('created_at', 'desc')
-            ->paginate(10);
-            
-        return view('admin.courses.index', compact('courses'));
-    }
-    
-    public function createCourse()
-    {
-        return view('admin.courses.create');
-    }
-    
-    public function storeCourse(Request $request)
-    {
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'resources' => 'nullable|string',
-        ]);
-        
-        Course::create($validated);
-        
-        return redirect()->route('admin.courses')->with('success', 'Course created successfully!');
-    }
-    
-    public function editCourse(Course $course)
-    {
-        return view('admin.courses.edit', compact('course'));
-    }
-    
-    public function updateCourse(Request $request, Course $course)
-    {
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'resources' => 'nullable|string',
-        ]);
-        
-        $course->update($validated);
-        
-        return redirect()->route('admin.courses')->with('success', 'Course updated successfully!');
-    }
-    
-    public function deleteCourse(Course $course)
-    {
-        // Delete all enrollments related to this course
-        $course->enrollments()->delete();
-        
-        // Delete the course
-        $course->delete();
-        
-        return redirect()->route('admin.courses')->with('success', 'Course deleted successfully!');
-    }
+
     
     // User Management
     public function users()
@@ -115,14 +60,13 @@ class AdminController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'is_admin' => 'sometimes|boolean',
+
         ]);
         
         // Hash the password
         $validated['password'] = Hash::make($validated['password']);
         
-        // Set is_admin to false if not provided
-        $validated['is_admin'] = $request->has('is_admin') ? true : false;
+
         
         User::create($validated);
         
@@ -140,7 +84,7 @@ class AdminController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
             'password' => 'nullable|string|min:6|confirmed',
-            'is_admin' => 'sometimes|boolean',
+
         ]);
         
         // Only update password if provided
@@ -148,8 +92,7 @@ class AdminController extends Controller
             $validated['password'] = Hash::make($request->password);
         }
         
-        // Set is_admin to false if not provided
-        $validated['is_admin'] = $request->has('is_admin') ? true : false;
+
         
         $user->update($validated);
         
