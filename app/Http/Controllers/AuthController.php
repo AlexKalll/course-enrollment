@@ -35,13 +35,17 @@ class AuthController extends Controller
     {
         $fields = $request->validate([
             'email' => 'required|string|email',
-            'password' => 'required|string',
+            'password' => 'required|string|min:6',
         ]);
 
         $user = User::where('email', $fields['email'])->first();
 
-        if (!$user || !Hash::check($fields['password'], $user->password)) {
-            return back()->withErrors(['email' => 'Invalid credentials']);
+        if (!$user) {
+            return back()->withErrors(['email' => 'No account found with this email']);
+        }
+        
+        if (!Hash::check($fields['password'], $user->password)) {
+            return back()->withErrors(['password' => 'Incorrect password']);
         }
 
       
