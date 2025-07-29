@@ -2,17 +2,36 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Course Management</div>
+    <h1>Course Management</h1>
+    <a href="{{ route('admin.courses.create') }}" class="btn btn-primary mb-3">Add New Course</a>
 
-                <div class="card-body">
-                    <!-- Content for Course Management -->
-                    <p>This is the course management page.</p>
-                </div>
-            </div>
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
         </div>
-    </div>
+    @endif
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                
+                <th>Price</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($courses as $course)
+            <tr>
+                <td>{{ $course->id }}</td>
+                <td><a href="{{ route('admin.courses.show', $course->id) }}">{{ $course->title }}</a></td>
+                
+                            <td>{{ $course->price }}</td>
+
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 </div>
 @endsection
