@@ -27,7 +27,6 @@ public function courses()
         'name',
         'email',
         'password',
-        'is_admin',
     ];
 
     /**
