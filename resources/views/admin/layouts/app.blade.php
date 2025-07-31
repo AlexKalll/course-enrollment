@@ -79,9 +79,17 @@
                 </div>
                 
                 @if(session('success'))
-                    <div class="alert alert-success">
+                    <div class="alert alert-success" id="success-alert">
                         {{ session('success') }}
                     </div>
+                    <script>
+                        setTimeout(function() {
+                            var alert = document.getElementById('success-alert');
+                            if (alert) {
+                                alert.style.display = 'none';
+                            }
+                        }, 2000);
+                    </script>
                 @endif
                 
                 @if(session('error'))
